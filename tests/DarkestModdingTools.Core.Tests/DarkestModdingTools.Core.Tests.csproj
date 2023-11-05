@@ -1,2 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\DarkestModdingTools.Core\DarkestModdingTools.Core.csproj" />
+  </ItemGroup>
 </Project>

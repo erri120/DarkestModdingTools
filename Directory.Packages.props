@@ -1,5 +1,9 @@
 <Project>
     <ItemGroup>
+        <PackageVersion Include="NexusMods.Paths" Version="0.1.8" />
+    </ItemGroup>
+
+    <ItemGroup>
         <PackageVersion Include="JetBrains.Annotations" Version="2023.2.0" PrivateAssets="all" />
         <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="all" />
     </ItemGroup>
