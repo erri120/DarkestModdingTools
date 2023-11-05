@@ -21,9 +21,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{37FDF3B5-DF2
 		src\Directory.Build.props = src\Directory.Build.props
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkestModdingTools.Core", "src\DarkestModdingTools.Core\DarkestModdingTools.Core.csproj", "{700158E6-1A29-4C2F-B225-7AE7C21D8EE4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkestModdingTools.Core.Tests", "tests\DarkestModdingTools.Core.Tests\DarkestModdingTools.Core.Tests.csproj", "{ED971D3F-03E0-4837-A33F-454185D328F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{700158E6-1A29-4C2F-B225-7AE7C21D8EE4} = {37FDF3B5-DF22-43A9-8CC6-840DA5ECD02F}
+		{ED971D3F-03E0-4837-A33F-454185D328F9} = {3ABE2CE1-D3FA-49BD-8AEC-7AB984E6904A}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{700158E6-1A29-4C2F-B225-7AE7C21D8EE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{700158E6-1A29-4C2F-B225-7AE7C21D8EE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{700158E6-1A29-4C2F-B225-7AE7C21D8EE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{700158E6-1A29-4C2F-B225-7AE7C21D8EE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED971D3F-03E0-4837-A33F-454185D328F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED971D3F-03E0-4837-A33F-454185D328F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED971D3F-03E0-4837-A33F-454185D328F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED971D3F-03E0-4837-A33F-454185D328F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
