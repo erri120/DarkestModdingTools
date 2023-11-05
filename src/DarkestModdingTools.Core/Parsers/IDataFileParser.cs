@@ -9,19 +9,14 @@ namespace DarkestModdingTools.Core.Parsers;
 /// Represents a data file parser.
 /// </summary>
 [PublicAPI]
-public interface IDataFileParser<out TDataFile>
+public interface IDataFileParser<TDataFile>
     where TDataFile : class, IDataFile
 {
-    /// <summary>
-    /// Checks whether the given extension is supported by the parser.
-    /// </summary>
-    public bool SupportsExtension(Extension extension);
-
     /// <summary>
     /// Tries to parse the given <see cref="Stream"/> into <see cref="TDataFile"/>.
     /// </summary>
     /// <remarks>
     /// The provided <see cref="Stream"/> will be disposed by the caller.
     /// </remarks>
-    public TDataFile? ParseFile(Stream stream, RelativePath gamePath);
+    public ParserResult<TDataFile> ParseFile(Stream stream, RelativePath gamePath);
 }

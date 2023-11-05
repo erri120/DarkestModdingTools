@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Text.Json;
 using DarkestModdingTools.Core.GameFiles;
@@ -20,16 +21,27 @@ public class JsonDataFileParser : IDataFileParser<JsonDataFile>
     };
 
     /// <inheritdoc/>
-    public bool SupportsExtension(Extension extension) => extension.Equals(SupportedExtension);
-
-    /// <inheritdoc/>
-    public JsonDataFile ParseFile(Stream stream, RelativePath gamePath)
+    public ParserResult<JsonDataFile> ParseFile(Stream stream, RelativePath gamePath)
     {
-        var jsonDocument = JsonDocument.Parse(stream, JsonDocumentOptions);
-        return new JsonDataFile
+        if (!gamePath.Extension.Equals(SupportedExtension))
+            return ParserResult<JsonDataFile>.Unsupported;
+
+        try
         {
-            GamePath = gamePath,
-            JsonDocument = jsonDocument
-        };
+            var jsonDocument = JsonDocument.Parse(stream, JsonDocumentOptions);
+            var res = new JsonDataFile
+            {
+                GamePath = gamePath,
+                JsonDocument = jsonDocument
+            };
+
+            return res;
+        }
+        catch (JsonException e)
+        {
+            if (e is { LineNumber: 0, BytePositionInLine: 0 })
+                return ParserResult<JsonDataFile>.Unsupported;
+            return e;
+        }
     }
 }
