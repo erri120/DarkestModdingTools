@@ -1,6 +1,6 @@
-using System;
 using System.IO;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using DarkestModdingTools.Core.GameFiles;
 using JetBrains.Annotations;
 using NexusMods.Paths;
@@ -14,6 +14,12 @@ namespace DarkestModdingTools.Core.Parsers;
 public class JsonDataFileParser : IDataFileParser<JsonDataFile>
 {
     private static readonly Extension SupportedExtension = new(".json");
+
+    private static readonly JsonNodeOptions JsonNodeOptions = new()
+    {
+        PropertyNameCaseInsensitive = true
+    };
+
     private static readonly JsonDocumentOptions JsonDocumentOptions = new()
     {
         CommentHandling = JsonCommentHandling.Skip,
@@ -28,11 +34,11 @@ public class JsonDataFileParser : IDataFileParser<JsonDataFile>
 
         try
         {
-            var jsonDocument = JsonDocument.Parse(stream, JsonDocumentOptions);
+            var node = JsonNode.Parse(stream, JsonNodeOptions, JsonDocumentOptions);
             var res = new JsonDataFile
             {
                 GamePath = gamePath,
-                JsonDocument = jsonDocument
+                Node = node!
             };
 
             return res;

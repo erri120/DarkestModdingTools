@@ -1,6 +1,7 @@
 <Project>
     <ItemGroup>
         <PackageVersion Include="NexusMods.Paths" Version="0.1.8" />
+        <PackageVersion Include="SystemTextJson.JsonDiffPatch" Version="1.3.1" />
     </ItemGroup>
 
     <ItemGroup>

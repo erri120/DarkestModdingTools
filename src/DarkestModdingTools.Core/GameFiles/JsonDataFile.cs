@@ -1,5 +1,4 @@
-using System;
-using System.Text.Json;
+using System.Text.Json.Nodes;
 using JetBrains.Annotations;
 using NexusMods.Paths;
 
@@ -14,11 +13,8 @@ public sealed record JsonDataFile : IDataFile
     /// <inheritdoc/>
     public required RelativePath GamePath { get; init; }
 
-    public required JsonDocument JsonDocument { get; init; }
+    public required JsonNode Node { get; init; }
 
     /// <inheritdoc/>
-    public void Dispose()
-    {
-        JsonDocument.Dispose();
-    }
+    public void Dispose() { }
 }
