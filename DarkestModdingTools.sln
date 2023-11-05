@@ -7,6 +7,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solutionItems", ".solution
 		.gitignore = .gitignore
 		LICENSE = LICENSE
 		README.md = README.md
+		Directory.Packages.props = Directory.Packages.props
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3ABE2CE1-D3FA-49BD-8AEC-7AB984E6904A}"
+	ProjectSection(SolutionItems) = preProject
+		tests\Directory.Build.props = tests\Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{37FDF3B5-DF22-43A9-8CC6-840DA5ECD02F}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
 	EndProjectSection
 EndProject
 Global

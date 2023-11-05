@@ -1,0 +1,37 @@
+<Project>
+    <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
+    <PropertyGroup>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="NSubstitute" />
+        <PackageReference Include="NSubstitute.Analyzers.CSharp"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AutoFixture" />
+        <PackageReference Include="AutoFixture.Xunit2" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="FluentAssertions" />
+        <PackageReference Include="FluentAssertions.Analyzers" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="xunit" />
+        <PackageReference Include="xunit.runner.visualstudio" />
+        <PackageReference Include="Xunit.SkippableFact" />
+        <PackageReference Include="Xunit.DependencyInjection" />
+        <PackageReference Include="Xunit.DependencyInjection.Logging" />
+        <PackageReference Include="Xunit.DependencyInjection.SkippableFact" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" />
+        <PackageReference Include="coverlet.collector" />
+        <PackageReference Include="GitHubActionsTestLogger" />
+    </ItemGroup>
+</Project>
