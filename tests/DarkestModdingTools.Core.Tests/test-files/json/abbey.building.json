@@ -1,0 +1,423 @@
+{
+    "on_start_town_visit_priority": 1,
+
+    "requirements":
+    {
+        "number_of_quests_finished": 2,
+        "highest_dungeon_level": 0
+    },
+
+    "data":
+    {
+        "activities":
+        [
+            {
+                "id":"meditation",
+                "data":
+                {
+                    "side_effects":
+                    {
+                        "chance": 0.375,
+                        "results":
+                        [
+                            {
+                                "type": "activity_lock",
+                                "chance": 1.0,
+                                "data":
+                                [
+
+                                ]
+                            },
+                            {
+                                "type": "go_missing",
+                                "chance": 2.0,
+                                "data":
+                                [
+                                    { "chance": 0.75, "duration": 1 },
+                                    { "chance": 0.25, "duration": 2 }
+                                ]
+                            },
+                            {
+                                "type": "add_quirk",
+                                "chance": 2.0,
+                                "data":
+                                [
+                                    { "chance": 1.0, "quirk_library_name": "enlightened" }
+                                ]
+                            },
+                            {
+                                "type": "add_quirk",
+                                "chance": 1.0,
+                                "data":
+                                [
+                                    { "chance": 1.0, "quirk_library_name": "improved_balance" }
+                                ]
+                            },
+                            {
+                                "type": "add_quirk",
+                                "chance": 1.0,
+                                "data":
+                                [
+                                    { "chance": 1.0, "quirk_library_name": "meditator" }
+                                ]
+                            },
+                            {
+                                "type": "add_quirk",
+                                "chance": 1.0,
+                                "data":
+                                [
+                                    { "chance": 1.0, "quirk_library_name": "calm" }
+                                ]
+                            },
+                            {
+                                "type": "add_quirk",
+                                "chance": 2.0,
+                                "data":
+                                [
+                                    { "chance": 1.0, "quirk_library_name": "unquiet_mind" }
+                                ]
+                            },
+                            {
+                                "type": "add_trinket",
+                                "chance": 0.0,
+                                "data":
+                                [
+                                    { "chance" : 1.0, "rarity": "very_rare" },
+                                    { "chance" : 1.0, "rarity": "rare" },
+                                    { "chance" : 1.0, "rarity": "uncommon" },
+                                    { "chance" : 1.0, "rarity": "common" },
+                                    { "chance" : 1.0, "rarity": "very_common" }
+                                ]
+                            },
+                            {
+                                "type": "remove_trinket",
+                                "chance": 0.0,
+                                "data":
+                                [
+
+                                ]
+                            }
+                        ]
+                    },
+                    "requirements":
+                    [
+                        {
+                            "type": "not_have_quirks",
+                            "data":
+                            {
+                                "quirk_library_names":
+                                [
+                                    "unquiet_mind",
+                                    "alcoholism",
+                                    "gambler",
+                                    "love_interest",
+                                    "god_fearing",
+                                    "flagellant"
+                                ]
+                            }
+                        }
+                    ],
+                    "miscellaneous" :
+                    {
+                        "caretaker_friendly" : true
+                    },
+                    "cost_upgrades":
+                    [
+                        { "cost_currency": { "type": "gold", "amount": 1000 } },
+                        { "cost_currency": { "type": "gold", "amount": 850 }, "upgrade_requirement_code": "b" },
+                        { "cost_currency": { "type": "gold", "amount": 700 }, "upgrade_requirement_code": "e" }
+                    ],
+
+                    "slot_upgrades":
+                    [
+                        { "number_of_slots": 1 },
+                        { "number_of_slots": 2, "upgrade_requirement_code": "c" },
+                        { "number_of_slots": 3, "upgrade_requirement_code": "f" }
+                    ],
+
+                    "stress_upgrades":
+                    [
+                        { "heal_low": 45, "heal_high": 45 },
+                        { "heal_low": 56, "heal_high": 56, "upgrade_requirement_code": "a" },
+                        { "heal_low": 70, "heal_high": 70, "upgrade_requirement_code": "d" }
+                    ],
+
+                    "affliction_cure_upgrades":
+                    [
+                        { "chance": 1.00 },
+                        { "chance": 0.10, "upgrade_requirement_code": "g" }
+                    ]
+                }    
+            },
+            {
+                "id":"prayer",
+                "data":
+                {
+                    "side_effects":
+                    {
+                        "chance": 0.375,
+                        "results":
+                        [
+                            {
+                                "type": "activity_lock",
+                                "chance": 2.0,
+                                "data":
+                                [
+
+                                ]
+                            },
+                            {
+                                "type": "go_missing",
+                                "chance": 1.0,
+                                "data":
+                                [
+                                    { "chance": 0.75, "duration": 1 },
+                                    { "chance": 0.25, "duration": 2 }
+                                ]
+                            },
+                            {
+                                "type": "add_quirk",
+                                "chance": 2.0,
+                                "data":
+                                [
+                                    { "chance": 1.0, "quirk_library_name": "god_fearing" }
+                                ]
+                            },
+                            {
+                                "type": "add_quirk",
+                                "chance": 2.0,
+                                "data":
+                                [
+                                    { "chance": 1.0, "quirk_library_name": "witness" }
+                                ]
+                            },                   
+                            {
+                                "type": "apply_buff",
+                                "chance": 2.0,
+                                "data":
+                                [
+                                    { "chance": 1.0, "buff_library_ids": [ "townPrayerDestressBuff" ] }
+                                ]
+                            },
+                            {
+                                "type": "remove_currency",
+                                "chance": 1.0,
+                                "data":
+                                [
+                                    { "chance": 1.0, "type": "gold", "amount": 1000 }
+                                ]
+                            },
+                            {
+                                "type": "add_trinket",
+                                "chance": 1.0,
+                                "data":
+                                [
+                                    { "chance" : 1.0, "rarity": "very_rare" },
+                                    { "chance" : 1.0, "rarity": "rare" },
+                                    { "chance" : 1.0, "rarity": "uncommon" },
+                                    { "chance" : 1.0, "rarity": "common" },
+                                    { "chance" : 1.0, "rarity": "very_common" }
+                                ]
+                            },
+                            {
+                                "type": "remove_trinket",
+                                "chance": 0.0,
+                                "data":
+                                [
+                                    { "chance" : 1.0, "rarity": "very_rare" },
+                                    { "chance" : 1.0, "rarity": "rare" },
+                                    { "chance" : 1.0, "rarity": "uncommon" },
+                                    { "chance" : 1.0, "rarity": "common" },
+                                    { "chance" : 1.0, "rarity": "very_common" }
+                                ]
+                            }
+                        ]
+                    },
+                    "requirements":
+                    [
+                        {
+                            "type": "not_have_quirks",
+                            "data":
+                            {
+                                "quirk_library_names":
+                                [
+                                    "witness",
+                                    "faithless",
+                                    "alcoholism",
+                                    "gambler",
+                                    "love_interest",
+                                    "enlightened",
+                                    "flagellant"
+                                ]
+                            }
+                        }
+                    ],
+                    "miscellaneous" :
+                    {
+                        "caretaker_friendly" : true
+                    },
+                    "cost_upgrades":
+                    [
+                        { "cost_currency": { "type": "gold", "amount": 1250 } },
+                        { "cost_currency": { "type": "gold", "amount": 1050 }, "upgrade_requirement_code": "b" },
+                        { "cost_currency": { "type": "gold", "amount": 900 }, "upgrade_requirement_code": "e" }
+                    ],
+
+                    "slot_upgrades":
+                    [
+                        { "number_of_slots": 1 },
+                        { "number_of_slots": 2, "upgrade_requirement_code": "c" },
+                        { "number_of_slots": 3, "upgrade_requirement_code": "f" }
+                    ],
+
+                    "stress_upgrades":
+                    [
+                        { "heal_low": 55, "heal_high": 55 },
+                        { "heal_low": 69, "heal_high": 69, "upgrade_requirement_code": "a" },
+                        { "heal_low": 86, "heal_high": 86, "upgrade_requirement_code": "d" }
+                    ],
+
+                    "affliction_cure_upgrades":
+                    [
+                        { "chance": 1.00 },
+                        { "chance": 0.10, "upgrade_requirement_code": "g" }
+                    ]
+                }
+            },
+            {
+                "id":"flagellation",
+                "data":
+                {
+                    "side_effects":
+                    {
+                        "chance": 0.375,
+                        "results":
+                        [
+                            {
+                                "type": "activity_lock",
+                                "chance": 2.0,
+                                "data":
+                                [
+
+                                ]
+                            },
+                            {
+                                "type": "go_missing",
+                                "chance": 1.0,
+                                "data":
+                                [
+                                    { "chance": 0.75, "duration": 1 },
+                                    { "chance": 0.25, "duration": 2 }
+                                ]
+                            },
+                            {
+                                "type": "add_quirk",
+                                "chance": 1.0,
+                                "data":
+                                [
+                                    { "chance": 1.0, "quirk_library_name": "flagellant" }
+                                ]
+                            },
+                            {
+                                "type": "add_quirk",
+                                "chance": 1.0,
+                                "data":
+                                [
+                                    { "chance": 1.0, "quirk_library_name": "faithless" }
+                                ]
+                            },
+                            {
+                                "type": "apply_buff",
+                                "chance": 2.0,
+                                "data":
+                                [
+                                    { "chance": 1.0, "buff_library_ids": [ "townFlagellationDMGLowBuff", "townFlagellationDMGHighBuff" ] }
+                                ]
+                            },
+                            {
+                                "type": "apply_buff",
+                                "chance": 1.0,
+                                "data":
+                                [
+                                    { "chance": 1.0, "buff_library_ids": [ "townFlagellationBleedDebuff" ] }
+                                ]
+                            },
+                            {
+                                "type": "add_trinket",
+                                "chance": 0.0,
+                                "data":
+                                [
+                                    { "chance" : 1.0, "rarity": "very_rare" },
+                                    { "chance" : 1.0, "rarity": "rare" },
+                                    { "chance" : 1.0, "rarity": "uncommon" },
+                                    { "chance" : 1.0, "rarity": "common" },
+                                    { "chance" : 1.0, "rarity": "very_common" }
+                                ]
+                            },
+                            {
+                                "type": "remove_trinket",
+                                "chance": 0.0,
+                                "data":
+                                [
+                                    { "chance" : 1.0, "rarity": "very_rare" },
+                                    { "chance" : 1.0, "rarity": "rare" },
+                                    { "chance" : 1.0, "rarity": "uncommon" },
+                                    { "chance" : 1.0, "rarity": "common" },
+                                    { "chance" : 1.0, "rarity": "very_common" }
+                                ]
+                            }
+                        ]
+                    },
+                    "requirements":
+                    [
+                        {
+                            "type": "not_have_quirks",
+                            "data":
+                            {
+                                "quirk_library_names":
+                                [
+                                    "faithless",
+                                    "alcoholism",
+                                    "gambler",
+                                    "love_interest",
+                                    "enlightened",
+                                    "god_fearing"
+                                ]
+                            }
+                        }
+                    ],
+                    "miscellaneous" :
+                    {
+                        "caretaker_friendly" : true
+                    },
+                    "cost_upgrades":
+                    [
+                        { "cost_currency": { "type": "gold", "amount": 1500 } },
+                        { "cost_currency": { "type": "gold", "amount": 1300 }, "upgrade_requirement_code": "b" },
+                        { "cost_currency": { "type": "gold", "amount": 1100 }, "upgrade_requirement_code": "e" }
+                    ],
+
+                    "slot_upgrades":
+                    [
+                        { "number_of_slots": 1 },
+                        { "number_of_slots": 2, "upgrade_requirement_code": "c" },
+                        { "number_of_slots": 3, "upgrade_requirement_code": "f" }
+                    ],
+
+                    "stress_upgrades":
+                    [
+                        { "heal_low": 65, "heal_high": 65 },
+                        { "heal_low": 81, "heal_high": 81, "upgrade_requirement_code": "a" },
+                        { "heal_low": 100, "heal_high": 100, "upgrade_requirement_code": "d" }
+                    ],
+
+                    "affliction_cure_upgrades":
+                    [
+                        { "chance": 1.00 },
+                        { "chance": 0.10, "upgrade_requirement_code": "g" }
+                    ]
+                }
+            }
+        ]
+    }
+}

@@ -1,5 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\DarkestModdingTools.Core\DarkestModdingTools.Core.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\DarkestModdingTools.Core\DarkestModdingTools.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="test-files\**">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
 </Project>

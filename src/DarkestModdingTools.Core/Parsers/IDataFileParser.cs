@@ -20,5 +20,8 @@ public interface IDataFileParser<out TDataFile>
     /// <summary>
     /// Tries to parse the given <see cref="Stream"/> into <see cref="TDataFile"/>.
     /// </summary>
+    /// <remarks>
+    /// The provided <see cref="Stream"/> will be disposed by the caller.
+    /// </remarks>
     public TDataFile? ParseFile(Stream stream, RelativePath gamePath);
 }

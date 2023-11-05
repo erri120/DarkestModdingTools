@@ -25,9 +25,6 @@
         <PackageReference Include="xunit" />
         <PackageReference Include="xunit.runner.visualstudio" />
         <PackageReference Include="Xunit.SkippableFact" />
-        <PackageReference Include="Xunit.DependencyInjection" />
-        <PackageReference Include="Xunit.DependencyInjection.Logging" />
-        <PackageReference Include="Xunit.DependencyInjection.SkippableFact" />
     </ItemGroup>
 
     <ItemGroup>
