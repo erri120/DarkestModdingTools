@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using DarkestModdingTools.Core.GameFiles;
+using JetBrains.Annotations;
 
 namespace DarkestModdingTools.Core.DiffProviders;
 
@@ -62,7 +64,7 @@ public class JsonDataFileDiffProvider : IDiffProvider<JsonDataFile, List<JsonDel
         foreach (var kv in left)
         {
             var (key, leftNode) = kv;
-            if (leftNode is null) throw new NotImplementedException();
+            if (leftNode is null) ThrowExplicitNull(left.GetPathWithKey(key));
 
             if (!right.ContainsKey(key))
             {
@@ -71,7 +73,7 @@ public class JsonDataFileDiffProvider : IDiffProvider<JsonDataFile, List<JsonDel
             }
 
             var rightNode = right[key];
-            if (rightNode is null) throw new NotImplementedException();
+            if (rightNode is null) ThrowExplicitNull(right.GetPathWithKey(key));
 
             stack.Push((leftNode, rightNode));
         }
@@ -79,7 +81,7 @@ public class JsonDataFileDiffProvider : IDiffProvider<JsonDataFile, List<JsonDel
         foreach (var kv in right)
         {
             var (key, rightNode) = kv;
-            if (rightNode is null) throw new NotImplementedException();
+            if (rightNode is null) ThrowExplicitNull(right.GetPathWithKey(key));
             if (left.ContainsKey(key)) continue;
 
             deltas.Add(new JsonDelta(rightNode.GetPath(), new Delta<JsonNode>(Optional<JsonNode>.None, rightNode, DeltaKind.Added)));
@@ -101,10 +103,8 @@ public class JsonDataFileDiffProvider : IDiffProvider<JsonDataFile, List<JsonDel
             var rightNode = right[i];
 
             if (leftNode is null && rightNode is null) continue;
-            if (leftNode is null || rightNode is null)
-            {
-                throw new NotImplementedException();
-            }
+            if (leftNode is null) ThrowExplicitNull(left.GetPathWithIndex(i));
+            if (rightNode is null) ThrowExplicitNull(right.GetPathWithIndex(i));
 
             stack.Push((leftNode, rightNode));
         }
@@ -154,5 +154,12 @@ public class JsonDataFileDiffProvider : IDiffProvider<JsonDataFile, List<JsonDel
             default:
                 throw new NotSupportedException($"Unsupported value kind: {leftElement.ValueKind} at {left.GetPath()}");
         }
+    }
+
+    [DoesNotReturn]
+    [ContractAnnotation("=> halt")]
+    private static void ThrowExplicitNull(string jsonPath)
+    {
+        throw new NotSupportedException($"Explicit null values in Json are not supported at {jsonPath}");
     }
 }

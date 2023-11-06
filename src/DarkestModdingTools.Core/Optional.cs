@@ -109,7 +109,7 @@ public readonly struct Optional<T> : IEquatable<Optional<T>>
     /// </summary>
     /// <param name="value">The optional value.</param>
     /// <returns>The value.</returns>
-    public static T? FromOptional(Optional<T> value) => value.Value;
+    public static T FromOptional(Optional<T> value) => value.Value;
 
     /// <summary>
     /// Gets the optional from a value.
