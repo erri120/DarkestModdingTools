@@ -1,7 +1,7 @@
 using System.Text.Json.Nodes;
 using JetBrains.Annotations;
 
-namespace DarkestModdingTools.Core.DiffProviders;
+namespace DarkestModdingTools.Core.DeltaProviders;
 
 [PublicAPI]
 public readonly record struct JsonDelta(string Path, Delta<JsonNode> Delta)

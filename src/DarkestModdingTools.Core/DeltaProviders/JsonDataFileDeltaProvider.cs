@@ -6,20 +6,14 @@ using System.Text.Json.Nodes;
 using DarkestModdingTools.Core.GameFiles;
 using JetBrains.Annotations;
 
-namespace DarkestModdingTools.Core.DiffProviders;
+namespace DarkestModdingTools.Core.DeltaProviders;
 
-public class JsonDataFileDiffProvider : IDiffProvider<JsonDataFile, List<JsonDelta>>
+public class JsonDataFileDeltaProvider : IDeltaProvider<JsonDataFile, JsonDelta>
 {
     public List<JsonDelta> Diff(JsonDataFile left, JsonDataFile right)
     {
-        var deltas = Diff(left.Node, right.Node);
-        return deltas;
-    }
-
-    private static List<JsonDelta> Diff(JsonNode leftStart, JsonNode rightStart)
-    {
         var stack = new Stack<(JsonNode leftNode, JsonNode rightNode)>();
-        stack.Push((leftStart, rightStart));
+        stack.Push((left.Node, right.Node));
 
         var deltas = new List<JsonDelta>();
 

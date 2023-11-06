@@ -1,12 +1,12 @@
-using DarkestModdingTools.Core.DiffProviders;
+using DarkestModdingTools.Core.DeltaProviders;
 using DarkestModdingTools.Core.GameFiles;
 using DarkestModdingTools.Core.Parsers;
 using FluentAssertions;
 using Xunit;
 
-namespace DarkestModdingTools.Core.Tests.DiffProviders;
+namespace DarkestModdingTools.Core.Tests.DeltaProviders;
 
-public class JsonDataFileDiffProviderTests
+public class JsonDataFileDeltaProviderTests
 {
     [Fact]
     public void Test_Diff_NotDifferent()
@@ -24,7 +24,7 @@ public class JsonDataFileDiffProviderTests
             right = res.GetValue();
         }
 
-        var diffProvider = new JsonDataFileDiffProvider();
+        var diffProvider = new JsonDataFileDeltaProvider();
         var diff = diffProvider.Diff(left, right);
         diff.Should().BeEmpty();
     }
@@ -51,7 +51,7 @@ public class JsonDataFileDiffProviderTests
             right = res.GetValue();
         }
 
-        var diffProvider = new JsonDataFileDiffProvider();
+        var diffProvider = new JsonDataFileDeltaProvider();
         var diff = diffProvider.Diff(left, right);
         diff.Should().ContainSingle();
 
