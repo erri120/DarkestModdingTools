@@ -1,7 +1,10 @@
+using System.IO;
+using System.Linq;
 using DarkestModdingTools.Core.DeltaProviders;
 using DarkestModdingTools.Core.GameFiles;
 using DarkestModdingTools.Core.Parsers;
 using FluentAssertions;
+using NexusMods.Paths;
 using Xunit;
 
 namespace DarkestModdingTools.Core.Tests.DeltaProviders;
@@ -62,5 +65,36 @@ public class JsonDataFileDeltaProviderTests
         item.Delta.Current.Value.GetValue<int>().Should().Be(9999);
         item.Delta.Previous.Value.GetValue<int>().Should().Be(1250);
         item.Delta.Kind.Should().Be(DeltaKind.Modified);
+    }
+
+    [SkippableFact]
+    public void Test_Diff_WithGameFiles()
+    {
+        Skip.IfNot(TestHelpers.TryGetGameDirectory(out var gameDirectory), "Game path wasn't set");
+        var jsonFiles = gameDirectory.EnumerateFiles(new Extension(".json"), recursive: true).ToArray();
+        jsonFiles.Should().NotBeEmpty();
+
+        var parser = new JsonDataFileParser();
+        var diffProvider = new JsonDataFileDeltaProvider();
+
+        jsonFiles.Should().AllSatisfy(jsonFile =>
+        {
+            JsonDataFile left;
+            JsonDataFile right;
+
+            var gamePath = jsonFile.RelativeTo(gameDirectory);
+            using (var stream = jsonFile.Open(FileMode.Open, FileAccess.Read, FileShare.Read))
+            using (var res = parser.ParseFile(stream, gamePath))
+            {
+                res.HasException().Should().BeFalse();
+                if (res == ParserResult<JsonDataFile>.Unsupported) return;
+
+                left = res.GetValue();
+                right = res.GetValue();
+            }
+
+            var diff = diffProvider.Diff(left, right);
+            diff.Should().BeEmpty();
+        });
     }
 }
