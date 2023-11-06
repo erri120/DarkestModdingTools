@@ -8,16 +8,18 @@ namespace DarkestModdingTools.Core.Tests.DeltaProviders;
 
 public class JsonDataFileDeltaProviderTests
 {
-    [Fact]
-    public void Test_Diff_NotDifferent()
+    [Theory]
+    [InlineData("json/abbey.building.json")]
+    [InlineData("json/base.buffs.json")]
+    public void Test_Diff_NotDifferent(string file)
     {
         var parser = new JsonDataFileParser();
 
         JsonDataFile left;
         JsonDataFile right;
 
-        using (var stream = TestHelpers.GetTestFile("json/abbey.building.json"))
-        using (var res = parser.ParseFile(stream, "campaign/town/buildings/abbey/abbey.building.json"))
+        using (var stream = TestHelpers.GetTestFile(file))
+        using (var res = parser.ParseFile(stream, "example.json"))
         {
             res.HasException().Should().BeFalse();
             left = res.GetValue();
