@@ -15,7 +15,18 @@ public static class TestHelpers
         if (gameDirectoryString is null) return false;
 
         gameDirectory = FileSystem.Shared.FromUnsanitizedFullPath(gameDirectoryString);
-        return true;
+        return gameDirectory.DirectoryExists();
+    }
+
+    public static bool TryGetWorkshopDirectory(out AbsolutePath workshopDirectory)
+    {
+        workshopDirectory = default;
+
+        var workshopDirectoryString = Environment.GetEnvironmentVariable("DD_WORKSHOP_DIRECTORY", EnvironmentVariableTarget.Process);
+        if (workshopDirectoryString is null) return false;
+
+        workshopDirectory = FileSystem.Shared.FromUnsanitizedFullPath(workshopDirectoryString);
+        return workshopDirectory.DirectoryExists();
     }
 
     public static Stream GetTestFile(RelativePath path)

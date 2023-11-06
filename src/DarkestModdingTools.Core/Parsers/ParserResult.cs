@@ -59,6 +59,10 @@ public readonly struct ParserResult<TDataFile> : IEquatable<ParserResult<TDataFi
         return _exception;
     }
 
+    [DoesNotReturn]
+    [ContractAnnotation("=> halt")]
+    public void ThrowException() => throw GetException();
+
     public static ParserResult<TDataFile> FromValue(TDataFile value)
     {
         return new ParserResult<TDataFile>(value);
@@ -74,8 +78,6 @@ public readonly struct ParserResult<TDataFile> : IEquatable<ParserResult<TDataFi
 
     public bool Equals(ParserResult<TDataFile> other)
     {
-        if (_value is null) return other._value is null;
-        if (_exception is null) return other._exception is null;
         return ReferenceEquals(_value, other._value) && ReferenceEquals(_exception, other._exception);
     }
 
